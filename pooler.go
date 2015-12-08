@@ -349,5 +349,3 @@ func (pp %[1]sPool) Put(p *%[1]s)  {
    pp.Pool.Put(p)
 }
 `
-
-type Pill int
