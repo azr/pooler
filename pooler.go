@@ -1,6 +1,7 @@
 // Pooler is a tool to automate the creation of typed sync.Pool wrappers.
 // Given the name of a type T, pooler will create a new self-contained Go source file implementing
 //
+//  type TPool struct { sync.Pool }
 //  func NewTPool() *TPool
 //  func (*TPool) Get() *T
 //  func (*TPool) Put(*T)
@@ -12,7 +13,7 @@
 //
 //  package painkiller
 //
-//  type Pill int
+//  type Pill struct { i int }
 //
 // running this command
 //
@@ -20,7 +21,7 @@
 //
 // in the same directory will create the file pill_pool.go, in package painkiller,
 // containing a definition of
-//
+//  type PillPool struct { sync.Pool }
 //  func NewPillPool() *PillPool
 //  func (*PillPool) Get() *Pill
 //  func (*PillPool) Put(*Pill)
@@ -28,9 +29,9 @@
 // So now running
 //  pp := NewPillPool()
 //  p := pp.Get()
-//  p = 2
-//  pp.Set(p)
-//  p2 := pp.Get() // p2 & p reference same var
+//  p.i = 2
+//  pp.Put(p)
+//  p2 := pp.Get() // p2 & p points to same var
 //
 // Will result in only one memory allocation of a Pill.
 //
