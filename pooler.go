@@ -21,10 +21,10 @@
 //
 // in the same directory will create the file pill_pool.go, in package painkiller,
 // containing a definition of
-//  type PillPool struct { sync.Pool }
+//  type PillPool      struct { sync.Pool }
 //  func NewPillPool() *PillPool
-//  func (*PillPool) Get() *Pill
-//  func (*PillPool) Put(*Pill)
+//  func (*PillPool)   Get() *Pill
+//  func (*PillPool)   Put(*Pill)
 //
 // So now running
 //  pp := NewPillPool()
@@ -49,8 +49,6 @@
 // with the -output flag.
 //
 // This code is a small update from https://godoc.org/golang.org/x/tools/cmd/stringer .
-//
-// Feel fee to use it.
 package main // import "github.com/azr/pooler"
 
 import (
